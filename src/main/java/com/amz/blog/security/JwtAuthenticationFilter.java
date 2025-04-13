@@ -3,15 +3,9 @@ package com.amz.blog.security;
 
 import java.io.IOException;
 import java.util.Enumeration;
-import java.util.Iterator;
 
-
-
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpServletRequest;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,9 +17,19 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
 
 @Component
+
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
+   private Logger logger = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
+
+
+   
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -51,13 +55,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
         // Bearer 2352523sdgsg
 
-        System.out.println(requestToken);
+        System.out.println("Jwt Auth filter:  Req Token: "+requestToken);
 
         String username = null;
 
         String token = null;
 
-        if (requestToken != null && requestToken.startsWith("Bearer")) {
+        if (requestToken != null && requestToken.startsWith("Bearer ")) {
 
             token = requestToken.substring(7);
 
@@ -73,6 +77,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
 
         } else {
+            logger.error("Error at JWTAuthFilter: ","Jwt token does not begin with Bearer");
             System.out.println("Jwt token does not begin with Bearer");
         }
 

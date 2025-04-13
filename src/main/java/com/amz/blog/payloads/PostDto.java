@@ -14,6 +14,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 public class PostDto {
+    private String postId;
     private String title;
     private String content;
     private String imageName;

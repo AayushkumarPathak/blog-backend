@@ -22,7 +22,10 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     private String name;
+
+    @Column(unique = true)
     private String email;
+    
     private String password;
     private String about;
 

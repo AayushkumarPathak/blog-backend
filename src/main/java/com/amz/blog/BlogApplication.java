@@ -47,10 +47,10 @@ public class BlogApplication implements CommandLineRunner {
             List<Role> roles = List.of(role, role1);
 
             List<Role> result = this.roleRepo.saveAll(roles);
-            result.forEach(r->{
-                System.out.println(r.getName());
-            });
-
+            // result.forEach(r->{
+            //     System.out.println(r.getName());
+            // });
+            System.out.println("\n\nBlogging APP started and Running successfully\n\n");
 
         }
         catch (Exception e){

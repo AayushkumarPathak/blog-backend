@@ -1,9 +1,8 @@
 package com.amz.blog.services;
 
-import com.amz.blog.payloads.CategoryDto;
-import com.amz.blog.repositories.CategoryRepo;
-
 import java.util.List;
+
+import com.amz.blog.payloads.CategoryDto;
 
 public interface CategoryService {
     //CREATE

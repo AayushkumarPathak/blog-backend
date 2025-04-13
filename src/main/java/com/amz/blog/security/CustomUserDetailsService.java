@@ -1,16 +1,15 @@
 package com.amz.blog.security;
 
 
-import com.amz.blog.entities.User;
-import com.amz.blog.exceptions.ResourceNotFoundException;
-import com.amz.blog.repositories.UserRepo;
-import com.amz.blog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import com.amz.blog.entities.User;
+import com.amz.blog.exceptions.ResourceNotFoundException;
+import com.amz.blog.repositories.UserRepo;
 
 @Service
 

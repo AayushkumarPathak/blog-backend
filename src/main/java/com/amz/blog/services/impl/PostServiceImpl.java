@@ -1,30 +1,28 @@
 package com.amz.blog.services.impl;
 
-import com.amz.blog.entities.Category;
-import com.amz.blog.entities.Post;
-import com.amz.blog.entities.User;
-import com.amz.blog.exceptions.ResourceNotFoundException;
-import com.amz.blog.payloads.PostDto;
-import com.amz.blog.payloads.PostResponse;
-import com.amz.blog.payloads.UserDto;
-import com.amz.blog.repositories.CategoryRepo;
-import com.amz.blog.repositories.PostRepo;
-import com.amz.blog.repositories.UserRepo;
-import com.amz.blog.services.PostService;
-import com.amz.blog.services.UserService;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
+import com.amz.blog.entities.Category;
+import com.amz.blog.entities.Post;
+import com.amz.blog.entities.User;
+import com.amz.blog.exceptions.ResourceNotFoundException;
+import com.amz.blog.payloads.PostDto;
+import com.amz.blog.payloads.PostResponse;
+import com.amz.blog.repositories.CategoryRepo;
+import com.amz.blog.repositories.PostRepo;
+import com.amz.blog.repositories.UserRepo;
+import com.amz.blog.services.PostService;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -53,7 +51,7 @@ public class PostServiceImpl implements PostService {
 
         //set the required to be filled not done by API
         thisPost.setPostId(UUID.randomUUID().toString());
-        thisPost.setImageName("default.png");
+        thisPost.setImageName("deafult.png");
         thisPost.setDateCreated(new Date());
         thisPost.setUser(user);
         thisPost.setCategory(category);
@@ -87,9 +85,10 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostResponse getAllPosts(Integer pageNumber, Integer pageSize,String sortBy) {
+    public PostResponse getAllPosts(Integer pageNumber, Integer pageSize,String sortBy,String sortDir) {
 
-        Pageable p = PageRequest.of(pageNumber,pageSize, Sort.by(sortBy));
+        Sort sort = (sortDir.equalsIgnoreCase("asc")) ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
+        Pageable p = PageRequest.of(pageNumber,pageSize,sort);
         Page<Post> pagePosts = postRepo.findAll(p);
         List<Post> posts = pagePosts.getContent();
 

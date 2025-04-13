@@ -1,5 +1,14 @@
 package com.amz.blog.services.impl;
 
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
 import com.amz.blog.config.AppConstants;
 import com.amz.blog.entities.Role;
 import com.amz.blog.entities.User;
@@ -8,15 +17,6 @@ import com.amz.blog.payloads.UserDto;
 import com.amz.blog.repositories.RoleRepo;
 import com.amz.blog.repositories.UserRepo;
 import com.amz.blog.services.UserService;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {

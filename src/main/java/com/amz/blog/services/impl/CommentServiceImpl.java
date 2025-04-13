@@ -1,20 +1,18 @@
 package com.amz.blog.services.impl;
 
-import com.amz.blog.entities.Comment;
-import com.amz.blog.entities.Post;
-import com.amz.blog.exceptions.ResourceNotFoundException;
-import com.amz.blog.payloads.ApiResponse;
-import com.amz.blog.payloads.CommentDto;
-import com.amz.blog.payloads.PostDto;
-import com.amz.blog.payloads.PostResponse;
-import com.amz.blog.repositories.CommentRepo;
-import com.amz.blog.repositories.PostRepo;
-import com.amz.blog.services.CommentService;
+import java.util.UUID;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
+import com.amz.blog.entities.Comment;
+import com.amz.blog.entities.Post;
+import com.amz.blog.exceptions.ResourceNotFoundException;
+import com.amz.blog.payloads.CommentDto;
+import com.amz.blog.repositories.CommentRepo;
+import com.amz.blog.repositories.PostRepo;
+import com.amz.blog.services.CommentService;
 
 @Service
 public class CommentServiceImpl implements CommentService {

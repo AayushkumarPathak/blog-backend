@@ -23,7 +23,7 @@ public class Post {
 
     @Column(name = "title",length = 100,nullable = false)
     private String title;
-    @Column(name = "content",length = 1000)
+    @Column(name = "content",length = 1000000000)
     private String content;
     private String imageName;
     private Date dateCreated;
@@ -36,6 +36,5 @@ public class Post {
     private User user;
 
     @OneToMany(mappedBy = "post",cascade = CascadeType.ALL)
-
     private Set<Comment> comments = new HashSet<>();
 }

@@ -1,10 +1,9 @@
 package com.amz.blog.services;
 
-import com.amz.blog.entities.Post;
+import java.util.List;
+
 import com.amz.blog.payloads.PostDto;
 import com.amz.blog.payloads.PostResponse;
-
-import java.util.List;
 
 public interface PostService {
     //create
@@ -16,7 +15,7 @@ public interface PostService {
     void deletePost(String postId);
 
     //get all post
-    PostResponse getAllPosts(Integer pageNumber, Integer pageSize,String sortBy);
+    PostResponse getAllPosts(Integer pageNumber, Integer pageSize,String sortBy,String sortDir);
     //get single post
     PostDto getPostById(String id);
 

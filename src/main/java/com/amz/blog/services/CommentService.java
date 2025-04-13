@@ -1,6 +1,5 @@
 package com.amz.blog.services;
 
-import com.amz.blog.payloads.ApiResponse;
 import com.amz.blog.payloads.CommentDto;
 
 public interface CommentService {

@@ -1,9 +1,8 @@
 package com.amz.blog.services;
 
-import com.amz.blog.entities.User;
-import com.amz.blog.payloads.UserDto;
-
 import java.util.List;
+
+import com.amz.blog.payloads.UserDto;
 
 public interface UserService {
     UserDto createUser(UserDto user);
